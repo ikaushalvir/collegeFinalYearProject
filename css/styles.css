@@ -13,14 +13,22 @@ body {
   text-align: center;
   color: #52006A;
 }
+.mario{
+  width:5%;
+  border-radius: 100%;
+
+}
 
 #array {
   background-color: white;
   height: 413px;
   width: 598px;
-  margin: auto;
   position: relative;
-  margin-top: 64px;
+
+  margin :auto;
+  margin-top: 50px;
+
+
 }
 
 .block {
@@ -38,16 +46,41 @@ body {
   width: 100%;
   text-align: center;
 }
+/* //buttons */
+.button-row {
+  text-align: center;
+}
+.button {
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: none;
+  border-radius: 7%;
+  background-color:white;
+  color:#6b5b95;
 
-.btn1
-{
-padding: 12px;
-font-weight: bolder;
-background-color: #6f459e;
-border-radius: 10px;
-color: white;
-font-size: 16px;
-border: white;
-margin-top: 1vw;
-margin-right: 1vw;
+}
+.button:hover {
+  color: white;
+  background-color: #6b5b95;
+
+}
+
+.generate-array-btn{
+
+  left: 10%;
+  bottom:30%;
+
+  width:100px;
+  height:30px;
+
+
+
+}
+.bubble-sort-btn{
+
+  left:10%;
+
+  width:100px;
+  height:30px;
+  margin-top: 15px;
 }

@@ -1,4 +1,19 @@
-  let container = document.querySelector("#array");
+  const container = document.querySelector("#array");
+  const buttons = document.querySelectorAll("button");
+  const generateArrayButton = buttons[0];
+  const bubbleSortButton = buttons[1];
+
+  generateArrayButton.addEventListener("click", function () {
+    container.textContent = "";
+    // generateArrayButton.disabled = true;
+    bubbleSortButton.disabled = false;
+    generateArray();
+  })
+
+  bubbleSortButton.addEventListener("click", function () {
+    bubbleSortButton.disabled = true;
+    bubbleSort();
+  })
 
   // to generate arrays
   function generateArray() {
@@ -39,16 +54,18 @@
       let temp = element1.style.transform;
       element1.style.transform = element2.style.transform;
       element2.style.transform = temp;
+       window.requestAnimationFrame(function() {
 
-      window.requestAnimationFrame(function() {
+          // For waiting for .25 sec
+          setTimeout(() => {
 
-        // For waiting for .25 sec
-        setTimeout(() => {
-          container.insertBefore(element2, element1);
-          resolve();
+            container.insertBefore(element2, element1);
+            resolve();
 
-        }, 250);
-      });
+          }, 250);
+        });
+
+
     })
   }
 
@@ -87,8 +104,10 @@
       }
       blocks[blocks.length - i - 1].style.backgroundColor = "#13CE66";
     }
+    // generateArrayButton.disabled = false;
 
   }
 
-  generateArray();
-  bubbleSort();
+
+
+  // bubbleSort();
