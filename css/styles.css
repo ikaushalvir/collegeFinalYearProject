@@ -13,11 +13,7 @@ body {
   text-align: center;
   color: #52006A;
 }
-.mario{
-  width:5%;
-  border-radius: 100%;
 
-}
 
 #array {
   background-color: white;
@@ -46,6 +42,8 @@ body {
   width: 100%;
   text-align: center;
 }
+
+
 /* //buttons */
 .button-row {
   text-align: center;
@@ -57,30 +55,12 @@ body {
   border-radius: 7%;
   background-color:white;
   color:#6b5b95;
-
+  width:100px;
+  height:30px;
+  margin: 5px;
 }
 .button:hover {
   color: white;
   background-color: #6b5b95;
 
-}
-
-.generate-array-btn{
-
-  left: 10%;
-  bottom:30%;
-
-  width:100px;
-  height:30px;
-
-
-
-}
-.bubble-sort-btn{
-
-  left:10%;
-
-  width:100px;
-  height:30px;
-  margin-top: 15px;
 }

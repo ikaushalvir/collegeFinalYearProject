@@ -2,18 +2,52 @@
   const buttons = document.querySelectorAll("button");
   const generateArrayButton = buttons[0];
   const bubbleSortButton = buttons[1];
+  const selectionSortButton = buttons[2];
+  const insertionSortButton = buttons[3];
+  const heading = document.querySelector("h1");
+
+// event listener for buttons
 
   generateArrayButton.addEventListener("click", function () {
     container.textContent = "";
+
+    heading.textContent="Algo - Game";
     // generateArrayButton.disabled = true;
-    bubbleSortButton.disabled = false;
+    enableButton();
     generateArray();
   })
 
   bubbleSortButton.addEventListener("click", function () {
-    bubbleSortButton.disabled = true;
+    heading.textContent="Bubble Sort ";
+    disableButton();
     bubbleSort();
   })
+
+  selectionSortButton.addEventListener("click", function() {
+    heading.textContent="Selection Sort ";
+    disableButton();
+    SelectionSort();
+  })
+
+  insertionSortButton.addEventListener("click", function() {
+    heading.textContent="Insertion Sort ";
+    disableButton();
+    InsertionSort();
+  })
+
+  //enable all buttons
+  function enableButton () {
+    bubbleSortButton.disabled = false;
+    selectionSortButton.disabled = false;
+    insertionSortButton.disabled = false;
+  }
+
+  //to disable all the buttons
+  function disableButton () {
+    bubbleSortButton.disabled = true;
+    selectionSortButton.disabled = true;
+    insertionSortButton.disabled = true;
+  }
 
   // to generate arrays
   function generateArray() {
@@ -48,6 +82,8 @@
 
     }
   }
+
+
   // promise to swap two value
   function swap(element1, element2) {
     return new Promise((resolve) => {
@@ -68,6 +104,8 @@
 
     })
   }
+
+
 
   //bubble Sort
   async function bubbleSort(delay = 100) {
@@ -104,10 +142,168 @@
       }
       blocks[blocks.length - i - 1].style.backgroundColor = "#13CE66";
     }
-    // generateArrayButton.disabled = false;
+    heading.textContent="Sorted!!!!!";
 
   }
 
+  // asynchronous function to perform "Selection Sort"
+  async function SelectionSort(delay = 300) {
+    let blocks = document.querySelectorAll(".block");
+    // Assign 0 to min_idx
+     let min_idx = 0;
+     for (let i = 0; i < blocks.length; i += 1) {
+
+      // Assign i to min_idx
+      min_idx = i;
+
+      // Provide darkblue color to the ith bar
+      blocks[i].style.backgroundColor = "darkblue";
+      for (let j = i + 1; j < blocks.length; j += 1) {
+
+        // Provide red color to the jth bar
+        blocks[j].style.backgroundColor = "red";
+
+        // To pause the execution of code for 300 milliseconds
+        await new Promise((resolve) =>
+          setTimeout(() => {
+            resolve();
+          }, 300)
+        );
+
+        // To store the integer value of jth bar to var1
+        let val1 = Number(blocks[j].childNodes[0].innerHTML);
+
+        // To store the integer value of (min_idx)th bar to var2
+        let val2 = Number(blocks[min_idx].childNodes[0].innerHTML);
+
+        // Compare val1 & val2
+        if (val1 < val2) {
+          if (min_idx !== i) {
+
+            // Provide skyblue color to the (min-idx)th bar
+            blocks[min_idx].style.backgroundColor = "  rgb(24, 190, 255)";
+          }
+          min_idx = j;
+        } else {
+
+          // Provide skyblue color to the jth bar
+          blocks[j].style.backgroundColor = "  rgb(24, 190, 255)";
+        }
+      }
+
+      // To swap ith and (min_idx)th bar
+      let temp1 = blocks[min_idx].style.height;
+      let temp2 = blocks[min_idx].childNodes[0].innerText;
+      blocks[min_idx].style.height = blocks[i].style.height;
+      blocks[i].style.height = temp1;
+      blocks[min_idx].childNodes[0].innerText = blocks[i].childNodes[0].innerText;
+      blocks[i].childNodes[0].innerText = temp2;
+
+      // To pause the execution of code for 300 milliseconds
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          resolve();
+        }, 300)
+      );
+
+      // Provide skyblue color to the (min-idx)th bar
+      blocks[min_idx].style.backgroundColor = "  rgb(24, 190, 255)";
+
+      // Provide lightgreen color to the ith bar
+      blocks[i].style.backgroundColor = " rgb(49, 226, 13)";
+    }
+    heading.textContent="Sorted!!!!!";
+}
+
+// Asynchronous function to perform "Insertion Sort"
+  async function InsertionSort(delay = 600) {
+  let blocks = document.querySelectorAll(".block");
+
+  // Provide lightgreen colour to 0th bar
+  blocks[0].style.backgroundColor = " rgb(49, 226, 13)";
+  for (let i = 1; i < blocks.length; i += 1) {
+
+    // Assign i-1 to j
+    let j = i - 1;
+
+    // To store the integer value of ith bar to key
+    let key =
+    parseInt(blocks[i].childNodes[0].innerHTML);
+
+    // To store the ith bar height to height
+    let height = blocks[i].style.height;
 
 
-  // bubbleSort();
+
+    // // For dynamically Updating the selected element
+    //   barval.innerHTML=
+    //   `<h3>Element Selected is :${key}</h3>`;
+
+    //Provide darkblue color to the ith bar
+    blocks[i].style.backgroundColor = "darkblue";
+
+    // To pause the execution of code for 600 milliseconds
+    await new Promise((resolve) =>
+    setTimeout(() => {
+      resolve();
+    }, 600)
+  );
+
+    // For placing selected element at its correct position
+    while (j >= 0 && parseInt(blocks[j].childNodes[0].innerHTML) > key) {
+
+      // Provide darkblue color to the jth bar
+      blocks[j].style.backgroundColor = "darkblue";
+
+      // For placing jth element over (j+1)th element
+      blocks[j + 1].style.height = blocks[j].style.height;
+      blocks[j + 1].childNodes[0].innerText =
+      blocks[j].childNodes[0].innerText;
+
+      // Assign j-1 to j
+      j = j - 1;
+
+      // To pause the execution of code for 600 milliseconds
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          resolve();
+        }, 600)
+      );
+
+      // Provide lightgreen color to the sorted part
+      for(let k=i;k>=0;k--){
+        blocks[k].style.backgroundColor = " rgb(49, 226, 13)";
+      }
+    }
+
+    // Placing the selected element to its correct position
+    blocks[j + 1].style.height = height;
+    blocks[j + 1].childNodes[0].innerHTML = key;
+
+    // To pause the execution of code for 600 milliseconds
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, 600)
+    );
+
+    // Provide light green color to the ith bar
+    blocks[i].style.backgroundColor = " rgb(49, 226, 13)";
+  }
+  heading.textContent="Sorted!!!!!";
+    // barval.innerHTML="<h3>Sorted!!!</h3>";
+
+  // To enable the button
+  // "Generate New Array" after final(sorted)
+  // document.getElementById("Button1")
+  // .disabled = false;
+  // document.getElementById("Button1")
+  // .style.backgroundColor = "#6f459e";
+  //
+  // // To enable the button
+  // // "Insertion Sort" after final(sorted)
+  // document.getElementById("Button2")
+  // .disabled = false;
+  // document.getElementById("Button2")
+  // .style.backgroundColor = "#6f459e";
+}
