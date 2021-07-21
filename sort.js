@@ -6,6 +6,39 @@
   const insertionSortButton = buttons[3];
   const heading = document.querySelector("h1");
 
+  // to generate arrays
+  function generateArray() {
+    for (let i = 0; i < 20; i++) {
+
+      // return a value between 1 and 100 (both inclusive)
+      let value = Math.ceil(Math.random() * 100);
+
+      // creating element div
+      let array_ele = document.createElement("div");
+
+      //adding class 'block' to div
+      array_ele.classList.add("block");
+
+      //adding style to div
+      array_ele.style.height = `${value*3}px`;
+      array_ele.style.transform = `translate(${i * 30}px)`;
+
+      //creating label element for displaying size of particular block;
+      let array_ele_label = document.createElement("label");
+      array_ele_label.classList.add("block_id");
+      array_ele_label.innerText = value;
+
+
+      //appending created element to the div "container"
+      array_ele.appendChild(array_ele_label);
+      container.appendChild(array_ele);
+
+
+
+
+
+    }
+  }
 // event listener for buttons
 
   generateArrayButton.addEventListener("click", function () {
@@ -49,39 +82,7 @@
     insertionSortButton.disabled = true;
   }
 
-  // to generate arrays
-  function generateArray() {
-    for (let i = 0; i < 20; i++) {
 
-      // return a value between 1 and 100 (both inclusive)
-      let value = Math.ceil(Math.random() * 100);
-
-      // creating element div
-      let array_ele = document.createElement("div");
-
-      //adding class 'block' to div
-      array_ele.classList.add("block");
-
-      //adding style to div
-      array_ele.style.height = `${value*3}px`;
-      array_ele.style.transform = `translate(${i * 30}px)`;
-
-      //creating label element for displaying size of particular block;
-      let array_ele_label = document.createElement("label");
-      array_ele_label.classList.add("block_id");
-      array_ele_label.innerText = value;
-
-
-      //appending created element to the div "container"
-      array_ele.appendChild(array_ele_label);
-      container.appendChild(array_ele);
-
-
-
-
-
-    }
-  }
 
 
   // promise to swap two value

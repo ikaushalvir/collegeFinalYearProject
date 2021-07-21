@@ -43,7 +43,16 @@ body {
   text-align: center;
 }
 
+/* input box for Search */
+.input-box{
+  text-align: center;
+  color: white;
+  width: 30%;
+  font-weight: bolder;
 
+
+  margin:20px auto;
+}
 /* //buttons */
 .button-row {
   text-align: center;
