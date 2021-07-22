@@ -1,0 +1,21 @@
+body {
+  background-color: #BEAEE2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* images */
+.mario-img{
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+}
+
+/* cards */
+.cards-class{
+  padding:10%;
+}
